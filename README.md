@@ -1,5 +1,8 @@
 # Vue Todo App
 
+
+[![Просмотры README](https://vbr.nathanchung.dev/badge?page_id=Richbanker.vue3-todo-vuex-ts&text=README_Views)](https://github.com/Richbanker/vue3-todo-vuex-ts)
+
 ## Описание проекта
 Это приложение для управления списком задач (todo list), разработанное в соответствии с техническим заданием. Приложение позволяет добавлять, удалять и отмечать задачи как выполненные, а также фильтровать их по статусу.
 
