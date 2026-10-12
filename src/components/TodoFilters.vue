@@ -3,6 +3,8 @@
     <button
       v-for="filter in filters"
       :key="filter.value"
+      type="button"
+      :aria-pressed="currentFilter === filter.value"
       @click="setFilter(filter.value)"
       :class="['todo-filters__button', { 'todo-filters__button--active': currentFilter === filter.value }]"
     >
