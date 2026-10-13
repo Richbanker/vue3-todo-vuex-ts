@@ -1,5 +1,6 @@
 <template>
   <div class="todo-list">
+    <p v-if="filteredTasks.length === 0" role="status" class="todo-list__empty">Нет задач для выбранного фильтра.</p>
     <TodoItem
       v-for="task in filteredTasks"
       :key="task.id"
@@ -31,6 +32,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.todo-list__empty {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+}
+
 .todo-list {
   border: 1px solid #ddd;
   border-radius: 4px;
