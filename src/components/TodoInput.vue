@@ -6,7 +6,7 @@
       placeholder="Что нужно сделать?"
       class="todo-input__field"
     />
-    <button @click="addTask" class="todo-input__button">Добавить</button>
+    <button type="button" @click="addTask" class="todo-input__button">Добавить</button>
   </div>
 </template>
 
