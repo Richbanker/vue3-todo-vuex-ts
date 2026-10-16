@@ -1,10 +1,10 @@
 <template>
-  <div class="app">
+  <main class="app">
     <h1>Список задач</h1>
     <TodoInput />
     <TodoFilters />
     <TodoList />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
