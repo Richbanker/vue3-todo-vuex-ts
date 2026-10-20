@@ -1,6 +1,7 @@
 <template>
   <div class="todo-filters">
     <button
+      type="button"
       v-for="filter in filters"
       :key="filter.value"
       @click="setFilter(filter.value)"
