@@ -88,7 +88,8 @@ export default defineComponent({
   transition: opacity 0.3s;
 }
 
-.todo-item:hover .todo-item__delete {
+.todo-item:hover .todo-item__delete,
+.todo-item:focus-within .todo-item__delete {
   opacity: 1;
 }
 
