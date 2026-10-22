@@ -7,7 +7,7 @@
       class="todo-item__checkbox"
     />
     <span class="todo-item__title">{{ task.title }}</span>
-    <button @click="deleteTask" class="todo-item__delete">×</button>
+    <button type="button" @click="deleteTask" class="todo-item__delete">×</button>
   </div>
 </template>
 
