@@ -95,4 +95,10 @@ export default defineComponent({
 .todo-item__delete:hover {
   color: #cc0000;
 }
+
+.todo-item__delete:focus-visible {
+  opacity: 1;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 </style> 
