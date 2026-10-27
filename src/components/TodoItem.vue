@@ -2,6 +2,7 @@
   <div class="todo-item" :class="{ 'todo-item--completed': task.completed }">
     <input
       type="checkbox"
+      :aria-label="`Отметить задачу: ${task.title}`"
       :checked="task.completed"
       @change="toggleTask"
       class="todo-item__checkbox"
