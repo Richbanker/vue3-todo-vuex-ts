@@ -67,6 +67,11 @@ export default defineComponent({
   background-color: #e9e9e9;
 }
 
+.todo-filters__button:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+}
+
 .todo-filters__button--active {
   background-color: #4CAF50;
   color: white;
