@@ -1,5 +1,5 @@
 <template>
-  <div class="todo-filters">
+  <div class="todo-filters" role="group" aria-label="Фильтр задач">
     <button
       v-for="filter in filters"
       :key="filter.value"
