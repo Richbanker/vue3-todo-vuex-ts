@@ -2,6 +2,7 @@
   <div class="todo-input">
     <input
       v-model="newTaskTitle"
+      aria-label="Название новой задачи"
       @keyup.enter="addTask"
       placeholder="Что нужно сделать?"
       class="todo-input__field"
