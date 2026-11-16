@@ -2,12 +2,13 @@
   <div class="todo-item" :class="{ 'todo-item--completed': task.completed }">
     <input
       type="checkbox"
+      :aria-label="`Отметить задачу: ${task.title}`"
       :checked="task.completed"
       @change="toggleTask"
       class="todo-item__checkbox"
     />
     <span class="todo-item__title">{{ task.title }}</span>
-    <button @click="deleteTask" class="todo-item__delete">×</button>
+    <button type="button" :aria-label="`Удалить задачу: ${task.title}`" @click="deleteTask" class="todo-item__delete">×</button>
   </div>
 </template>
 
@@ -88,7 +89,8 @@ export default defineComponent({
   transition: opacity 0.3s;
 }
 
-.todo-item:hover .todo-item__delete {
+.todo-item:hover .todo-item__delete,
+.todo-item__delete:focus-visible {
   opacity: 1;
 }
 
