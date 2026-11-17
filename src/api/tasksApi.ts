@@ -6,6 +6,7 @@ let tasks: Task[] = [
 ];
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+let nextTaskId = Math.max(0, ...tasks.map(task => task.id)) + 1;
 
 export const tasksApi = {
   async get(): Promise<Task[]> {
@@ -15,7 +16,7 @@ export const tasksApi = {
   async add(title: string): Promise<Task> {
     await delay(500);
     const newTask: Task = {
-      id: Date.now(),
+      id: nextTaskId++,
       title,
       completed: false,
     };
