@@ -7,7 +7,7 @@
       placeholder="Что нужно сделать?"
       class="todo-input__field"
     />
-    <button type="button" @click="addTask" class="todo-input__button">Добавить</button>
+    <button type="button" @click="addTask" :disabled="isAdding || !newTaskTitle.trim()" class="todo-input__button">Добавить</button>
   </div>
 </template>
 
@@ -21,16 +21,24 @@ export default defineComponent({
   setup() {
     const store = useStore<State>();
     const newTaskTitle = ref('');
+    const isAdding = ref(false);
 
     const addTask = async () => {
-      if (newTaskTitle.value.trim()) {
-        await store.dispatch('addTask', newTaskTitle.value.trim());
-        newTaskTitle.value = '';
+      if (isAdding.value) return;
+      const title = newTaskTitle.value.trim();
+      if (!title) return;
+      isAdding.value = true;
+      try {
+        await store.dispatch('addTask', title);
+        if (newTaskTitle.value.trim() === title) newTaskTitle.value = '';
+      } finally {
+        isAdding.value = false;
       }
     };
 
     return {
       newTaskTitle,
+      isAdding,
       addTask,
     };
   },
@@ -63,7 +71,12 @@ export default defineComponent({
   transition: background-color 0.3s;
 }
 
-.todo-input__button:hover {
+.todo-input__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.todo-input__button:hover:not(:disabled) {
   background-color: #45a049;
 }
 </style> 
