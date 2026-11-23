@@ -1,14 +1,21 @@
 <template>
   <main class="app">
     <h1>Список задач</h1>
-    <TodoInput />
-    <TodoFilters />
-    <TodoList />
+    <p v-if="isLoading" role="status">Загрузка задач...</p>
+    <div v-else-if="loadError" role="alert">
+      <p>Не удалось загрузить задачи.</p>
+      <button type="button" @click="loadTasks">Повторить</button>
+    </div>
+    <template v-else>
+      <TodoInput />
+      <TodoFilters />
+      <TodoList />
+    </template>
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
@@ -25,9 +32,21 @@ export default defineComponent({
   setup() {
     const store = useStore<State>();
 
-    onMounted(async () => {
-      await store.dispatch('fetchTasks');
-    });
+    const isLoading = ref(true);
+    const loadError = ref(false);
+    const loadTasks = async () => {
+      isLoading.value = true;
+      loadError.value = false;
+      try {
+        await store.dispatch('fetchTasks');
+      } catch {
+        loadError.value = true;
+      } finally {
+        isLoading.value = false;
+      }
+    };
+    onMounted(loadTasks);
+    return { isLoading, loadError, loadTasks };
   },
 });
 </script>
